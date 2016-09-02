@@ -89,13 +89,6 @@ module.exports = function({ addTransitionState, removeTransitionState }) {
       else {
         const retVal = [];
 
-        // Last resort check for child.
-        map.forEach((fn, element) => {
-          if (element.contains(child)) {
-            retVal.push(fn.apply(child, [element].concat(child, rest)));
-          }
-        });
-
         const hasPromise = retVal.some(ret => Boolean(ret && ret.then));
 
         // This is the only time the return value matters.
